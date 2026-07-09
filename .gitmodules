@@ -1,0 +1,60 @@
+[submodule "builder"]
+	path = builder
+	url = https://github.com/frappe/builder
+	branch = develop
+[submodule "wiki"]
+	path = wiki
+	url = https://github.com/frappe/wiki
+	branch = develop
+[submodule "crm"]
+	path = crm
+	url = https://github.com/frappe/crm
+	branch = main
+[submodule "payments"]
+	path = payments
+	url = https://github.com/frappe/payments
+	branch = version-16
+[submodule "insights"]
+	path = insights
+	url = https://github.com/frappe/insights
+	branch = main
+[submodule "erpnext"]
+	path = erpnext
+	url = https://github.com/frappe/erpnext
+	branch = version-16
+[submodule "helpdesk"]
+	path = helpdesk
+	url = https://github.com/frappe/helpdesk
+	branch = main
+[submodule "lms"]
+	path = lms
+	url = https://github.com/frappe/lms
+	branch = main
+[submodule "blog"]
+	path = blog
+	url = https://github.com/frappe/blog
+	branch = version-16
+[submodule "hrms"]
+	path = hrms
+	url = https://github.com/frappe/hrms
+	branch = version-16
+[submodule "healthcare"]
+	path = healthcare
+	url = https://github.com/frappe/healthcare
+	branch = version-16
+[submodule "drive"]
+	path = drive
+	url = https://github.com/frappe/drive
+	branch = main
+[submodule "print_designer"]
+	path = print_designer
+	url = https://github.com/frappe/print_designer
+	branch = main
+[submodule "gameplan"]
+	path = gameplan
+	url = https://github.com/frappe/gameplan
+	branch = main
+[submodule "webshop"]
+	path = webshop
+	url = https://github.com/frappe/webshop
+	branch = version-16
