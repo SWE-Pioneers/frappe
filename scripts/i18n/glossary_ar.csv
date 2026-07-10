@@ -1,0 +1,72 @@
+english,arabic,notes
+Course,دورة تدريبية,LMS
+Batch,دفعة,LMS cohort
+Lesson,درس,LMS
+Chapter,فصل,LMS
+Quiz,اختبار قصير,LMS
+Assignment,واجب,LMS
+Certificate,شهادة,LMS
+Enrollment,تسجيل,LMS
+Instructor,مدرّب,LMS
+Student,طالب,LMS
+Invoice,فاتورة,ERPNext
+Sales Invoice,فاتورة مبيعات,ERPNext
+Purchase Invoice,فاتورة شراء,ERPNext
+Payment Request,طلب دفع,payments
+Payment Entry,قيد دفع,ERPNext
+Payment Gateway,بوابة دفع,payments
+Wallet,محفظة,payments
+Quotation,عرض سعر,ERPNext
+Sales Order,أمر بيع,ERPNext
+Purchase Order,أمر شراء,ERPNext
+Delivery Note,إشعار تسليم,ERPNext
+Journal Entry,قيد يومية,ERPNext
+Ledger,دفتر الأستاذ,ERPNext
+Account,حساب,ERPNext
+Customer,عميل,shared
+Supplier,مورّد,ERPNext
+Item,صنف,ERPNext
+Warehouse,مخزن,ERPNext
+Stock,مخزون,ERPNext
+Employee,موظف,HRMS
+Leave,إجازة,HRMS
+Attendance,حضور,HRMS
+Payroll,كشف الرواتب,HRMS
+Salary Slip,قسيمة راتب,HRMS
+Expense Claim,مطالبة مصروفات,HRMS
+Shift,وردية,HRMS
+Ticket,تذكرة,Helpdesk
+Agent,وكيل,Helpdesk
+Lead,عميل محتمل,CRM
+Deal,صفقة,CRM
+Contact,جهة اتصال,shared
+Task,مهمة,shared
+Project,مشروع,shared
+Dashboard,لوحة المعلومات,shared
+Settings,الإعدادات,shared
+Report,تقرير,shared
+Draft,مسودة,doc status
+Submitted,معتمد,doc status
+Cancelled,ملغى,doc status
+Pending,قيد الانتظار,status
+Completed,مكتمل,status
+Failed,فشل,status
+Save,حفظ,action
+Submit,اعتماد,action - docstatus submit
+Cancel,إلغاء,action
+Delete,حذف,action
+Edit,تعديل,action
+Create,إنشاء,action
+Search,بحث,action
+Filter,تصفية,action
+Upload,رفع,action
+Download,تنزيل,action
+Sign In,تسجيل الدخول,auth
+Sign Up,إنشاء حساب,auth
+Email,البريد الإلكتروني,shared
+Amount,المبلغ,money
+Currency,العملة,money
+Price,السعر,money
+Discount,خصم,money
+Total,الإجمالي,money
+Tax,ضريبة,money
