@@ -1,60 +1,60 @@
 [submodule "builder"]
 	path = builder
-	url = https://github.com/frappe/builder
+	url = https://github.com/SWE-Pioneers/frappe-builder.git
 	branch = develop
 [submodule "wiki"]
 	path = wiki
-	url = https://github.com/frappe/wiki
+	url = https://github.com/SWE-Pioneers/frappe-wiki.git
 	branch = develop
 [submodule "crm"]
 	path = crm
-	url = https://github.com/frappe/crm
+	url = https://github.com/SWE-Pioneers/frappe-crm.git
 	branch = main
 [submodule "payments"]
 	path = payments
-	url = https://github.com/frappe/payments
+	url = https://github.com/SWE-Pioneers/frappe-payments.git
 	branch = version-16
 [submodule "insights"]
 	path = insights
-	url = https://github.com/frappe/insights
+	url = https://github.com/SWE-Pioneers/frappe-insights.git
 	branch = main
 [submodule "erpnext"]
 	path = erpnext
-	url = https://github.com/frappe/erpnext
+	url = https://github.com/SWE-Pioneers/frappe-erpnext.git
 	branch = version-16
 [submodule "helpdesk"]
 	path = helpdesk
-	url = https://github.com/frappe/helpdesk
+	url = https://github.com/SWE-Pioneers/frappe-helpdesk.git
 	branch = main
 [submodule "lms"]
 	path = lms
-	url = https://github.com/frappe/lms
+	url = https://github.com/SWE-Pioneers/frappe-lms.git
 	branch = main
 [submodule "blog"]
 	path = blog
-	url = https://github.com/frappe/blog
+	url = https://github.com/SWE-Pioneers/frappe-blog.git
 	branch = version-16
 [submodule "hrms"]
 	path = hrms
-	url = https://github.com/frappe/hrms
+	url = https://github.com/SWE-Pioneers/frappe-hrms.git
 	branch = version-16
 [submodule "healthcare"]
 	path = healthcare
-	url = https://github.com/frappe/healthcare
+	url = https://github.com/SWE-Pioneers/frappe-healthcare.git
 	branch = version-16
 [submodule "drive"]
 	path = drive
-	url = https://github.com/frappe/drive
+	url = https://github.com/SWE-Pioneers/frappe-drive.git
 	branch = main
 [submodule "print_designer"]
 	path = print_designer
-	url = https://github.com/frappe/print_designer
+	url = https://github.com/SWE-Pioneers/frappe-print_designer.git
 	branch = main
 [submodule "gameplan"]
 	path = gameplan
-	url = https://github.com/frappe/gameplan
+	url = https://github.com/SWE-Pioneers/frappe-gameplan.git
 	branch = main
 [submodule "webshop"]
 	path = webshop
-	url = https://github.com/frappe/webshop
+	url = https://github.com/SWE-Pioneers/frappe-webshop.git
 	branch = version-16
