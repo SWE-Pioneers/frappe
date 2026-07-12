@@ -1,0 +1,18 @@
+
+# Playwright verification project (session artifacts; see CLAUDE.md -> Verification)
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/tests/
+/screenshots/
+/package.json
+/pnpm-lock.yaml
+/playwright.config.ts
+/.github/workflows/playwright.yml
+
+# python
+__pycache__/
+*.pyc
