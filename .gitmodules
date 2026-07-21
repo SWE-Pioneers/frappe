@@ -58,3 +58,7 @@
 	path = webshop
 	url = https://github.com/SWE-Pioneers/frappe-webshop.git
 	branch = version-16
+[submodule "books"]
+	path = books
+	url = https://github.com/SWE-Pioneers/frappe-books.git
+	branch = master
