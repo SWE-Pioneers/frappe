@@ -58,3 +58,7 @@
 	path = webshop
 	url = https://github.com/SWE-Pioneers/frappe-webshop.git
 	branch = version-16
+[submodule "sales_system_setup"]
+	path = sales_system_setup
+	url = https://github.com/SWE-Pioneers/frappe-sales_system_setup.git
+	branch = main
