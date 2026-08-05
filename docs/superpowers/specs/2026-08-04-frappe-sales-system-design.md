@@ -118,7 +118,9 @@ The main custom deliverable. A small Frappe app that turns a blank site into a c
 - Register each Libyan gateway (from `payments` fork) as a **Payment Gateway Account**.
 - **Webshop checkout** → ERPNext Payment Request → gateway → callback marks the Sales Invoice paid.
 - **POS** → gateway as a POS payment mode; **cash always works offline**, card/online requires connectivity.
-- **Status (resolved 2026-08-04): gateways are NOT live** — bank registration must complete first. So **v1 online checkout ships with manual payment methods** (cash-on-delivery + bank transfer / mark-as-paid). The Libyan gateway is a **later drop-in** once registration completes — the checkout is built so the gateway slots into the existing Payment Request flow without reworking the storefront. Cash + in-person POS flows are unaffected and ship in v1.
+- **Status (resolved 2026-08-04): gateways are NOT live** — bank registration must complete first, so v1 has no online payment.
+- **Implementation reality (verified during build):** Frappe v16 webshop has **no "checkout on, zero gateway" mode** (`WebshopSettings.validate_checkout()` force-resets `enable_checkout=0` without a `payment_gateway_account`). So **v1 manual payment = `enable_checkout=0`**: the storefront button becomes **"Request for Quote"** → submits a **Quotation**; the owner converts it to a Sales Order once payment is settled offline (cash on delivery / bank transfer). No online "Pay" button is ever rendered (it's gated on `enabled_checkout`), and **no placeholder gateway** is created. In-person cash/POS is unaffected.
+- **Gateway drop-in (later):** once the Libyan processor is registered, create its Payment Gateway + Payment Gateway Account and set **both** `enable_checkout=1` and `payment_gateway_account` on Webshop Settings — that flips the storefront to Sales-Order-with-online-Pay checkout. The seam is marked in `setup/webshop.py`.
 
 ## 10. Desktop / PWA packaging & offline
 
