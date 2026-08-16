@@ -14,9 +14,21 @@
 # Usage:
 #   tools/check-against-apps-json.sh                       # fetch apps.json from GitHub via gh
 #   tools/check-against-apps-json.sh ../vps/frappe-apps/apps.json   # or read a local checkout
-#   STRICT_PINS=1 tools/check-against-apps-json.sh         # also FAIL when a pin is behind its branch
+#   CHECK_PINS=1  tools/check-against-apps-json.sh         # also compare pins to branch tips (network)
+#   STRICT_PINS=1 tools/check-against-apps-json.sh         # ...and FAIL when a pin is behind its branch
 set -uo pipefail
 cd "$(dirname "$0")/.."
+
+# Pick an interpreter that actually RUNS. On Windows `python3` is usually a Microsoft Store alias
+# that hangs waiting on the Store UI instead of failing, so `command -v` alone is not enough — probe
+# it, under a timeout, and fall through to the next candidate.
+PROBE=""; command -v timeout >/dev/null 2>&1 && PROBE="timeout 5"
+PY=""
+for c in python3 python py; do
+  command -v "$c" >/dev/null 2>&1 || continue
+  $PROBE "$c" -c 'import json' >/dev/null 2>&1 && { PY="$c"; break; }
+done
+[ -n "$PY" ] || { echo "FAIL: no working python (need python3/python with json)"; exit 2; }
 
 APPS_JSON="${1:-}"
 if [ -z "$APPS_JSON" ]; then
@@ -45,25 +57,34 @@ while read -r name url branch; do
     echo "  FAIL $name: branch '$have_branch' != shipping '$branch'"; rc=1; continue
   fi
   echo "  ok   $name @ $branch"
-done < <(python3 -c '
+done < <($PY -c '
 import json,sys
 for a in json.load(open(sys.argv[1], encoding="utf-8")):
     url = a["url"].rstrip("/")
     print(url.rsplit("/",1)[-1].replace("frappe-","",1), url, a.get("branch",""))
-' "$APPS_JSON")
+' "$APPS_JSON" | tr -d '\r')
 
 echo
 echo "[2] submodules here that do NOT ship (informational — extras are allowed on purpose)"
-shipping="$(python3 -c '
+shipping="$($PY -c '
 import json,sys
 print(" ".join(a["url"].rstrip("/").rsplit("/",1)[-1].replace("frappe-","",1)
                 for a in json.load(open(sys.argv[1], encoding="utf-8"))))
-' "$APPS_JSON")"
+' "$APPS_JSON" | tr -d '\r')"
 for name in $(git config -f .gitmodules --get-regexp '^submodule\..*\.url$' | sed -E 's/^submodule\.(.*)\.url .*/\1/'); do
   case " $shipping " in *" $name "*) ;; *) echo "  info $name is not in apps.json (not shipped to customers)";; esac
 done
 
 echo
+# [3] costs one network round-trip per app (~16 of them), so it is opt-in. The declaration check
+# above is the one that catches drift that makes this mirror lie, and it is offline and instant.
+if [ "${CHECK_PINS:-0}" != "1" ] && [ "${STRICT_PINS:-0}" != "1" ]; then
+  echo "[3] pin freshness: skipped (set CHECK_PINS=1 to compare pins against branch tips)"
+  echo
+  [ "$rc" = 0 ] && echo "forks agree with the shipping manifest" \
+                || echo "FORK MIRROR IS OUT OF SYNC WITH WHAT WE SHIP"
+  exit "$rc"
+fi
 echo "[3] pins vs the tip of each declared branch"
 while read -r name url branch; do
   pinned="$(git ls-tree HEAD "$name" | awk '{print $3}')"
@@ -78,12 +99,12 @@ while read -r name url branch; do
   else
     echo "  ok    $name at tip"
   fi
-done < <(python3 -c '
+done < <($PY -c '
 import json,sys
 for a in json.load(open(sys.argv[1], encoding="utf-8")):
     url = a["url"].rstrip("/")
     print(url.rsplit("/",1)[-1].replace("frappe-","",1), url, a.get("branch",""))
-' "$APPS_JSON")
+' "$APPS_JSON" | tr -d '\r')
 
 echo
 [ "$rc" = 0 ] && echo "forks agree with the shipping manifest" || echo "FORK MIRROR IS OUT OF SYNC WITH WHAT WE SHIP"
