@@ -25,7 +25,7 @@
 [submodule "helpdesk"]
 	path = helpdesk
 	url = https://github.com/SWE-Pioneers/frappe-helpdesk.git
-	branch = main
+	branch = swe-v16
 [submodule "lms"]
 	path = lms
 	url = https://github.com/SWE-Pioneers/frappe-lms.git
@@ -58,6 +58,10 @@
 	path = webshop
 	url = https://github.com/SWE-Pioneers/frappe-webshop.git
 	branch = version-16
+[submodule "telephony"]
+	path = telephony
+	url = https://github.com/SWE-Pioneers/frappe-telephony.git
+	branch = develop
 [submodule "books"]
 	path = books
 	url = https://github.com/SWE-Pioneers/frappe-books.git

@@ -1,0 +1,3 @@
+# Shell scripts must be LF. A CRLF shebang line is not a valid shebang, and CRLF also breaks
+# backslash line-continuations — a class of failure this platform has already paid for once.
+*.sh text eol=lf
